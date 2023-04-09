@@ -37,3 +37,25 @@ plot1 <- ggplot(cleandData.df, aes(x = order, y = total_length)) +
   labs (x= "Order", y = "Total length")
 
 ggsave(here("figures", "plot1.png"), height = 5, width = 6)
+
+
+
+
+
+
+
+
+
+
+#Cara 2 yang paling cepat
+#|> artinya adalah langsung meneruskan tanpa harus mengubahnya ke variable
+#Load csv file
+read.csv(data.path) |>
+  clean_names() |> #clean collname first
+  select(calls) |> #select only desired columns
+  ggplot(aes(x = order, y = total_length)) + #plot results
+  geom_point() +
+  theme_classic() + 
+  labs (x= "Order", y = "Total length")
+
+ggsave(here("figures", "plot2.png"), height = 5, width = 6)
